@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homenaje a Graciela Alejandra Martinez</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Homenaje a Graciela Alejandra Martinez</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        A sus 61 años, Graciela ha realizado diversos estudios y trabajos importantes obteniendo grandes logros como profesional. Pero por sobre todas las cosas, ha sido la madre excepcional de sus 3 hijos, Sofia, Fiorella y Fernando. Vive para hacer el bien a los demás. Realiza donaciones a refugios de niños, especialmente para navidad y festividades, ayudando a los más necesitados. Esta página está creada con el fin de mostrarle al mundo quién fue esta valiente y luchadora mujer.
+      </p>
+    </section>
+
+    <section class="logros">
+      <h2>🌟 Logros, estudios y empleos 🌟</h2>
+      <section>
+        <ul>
+          <li>🩺 Se ha formado como Auxiliar de enfermería, kinesiología y reflexología en la Cruz Roja, convirtiéndose así en...</li>
+          <li>👩‍⚕️ Jefa de terapia intensiva en Hospital Llavallol y...</li>
+          <li>🏥 Realizando tareas varias como Enfermera en el Policlínico de Lomas de Zamora.</li>
+          <li>💅 Se ha especializado a lo largo de su vida en áreas de estética y belleza como peluquería, depilación, uñas esculpidas, estética corporal, manicuria, permanente y tinte de pestañas, decoración de uñas, microblading, cejas 3D, masaje deportivo, masaje con esferas, pasando así a ser...</li>
+          <li>👩‍🏫 Instructora en la escuela Adela Sanz.</li>
+          <li>📢 Ha dado charlas y expocisiones en importantes marcas de estética como Silkey y Rural Famaux.</li>
+          <li>🧘‍♀️ Además, se formó con bastos conocimientos holísticos que lograron ayudar a las personas desde un enfoque diferente y saludable, siendo practicante y maestra de...</li>
+          <li>✨ Reiki (niveles 1 al 3 y Maestría).</li>
+          <li>🌸 Terapia Floral (Flores de Bach).</li>
+          <li>👐 Con todos sus arduos conocimientos y esfuerzo, trabajó para lograr su gabinete propio que ofrece distintas ramas de salud: Terapia Floral, Terapia Reiki, Aromaterapia, Masoterapia (masajes terapéuticos, kinesiológicos y reflexología).</li>
+          <li>🧠 Además, decidió ir más allá y poder ayudar a las personas que sufren de trastornos o dificultades mentales o psicomotrices, ampliando sus conocimientos en...</li>
+          <li>🏥 Jornadas de salud mental en el Hospital Borda.</li>
+          <li>🏫 Jornada de Instructores en la U.T.N. Cursos de A.T. (Acompañamiento Terapéutico) en el Centro Psicosocial Argentino.</li>
+          <li>🤝 Se ha destacado como Acompañante domiciliaria en casos de anorexia, bulimia, adicciones y bipolaridad.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section class="galeria-section">
+      <h2>Su Motivación</h2>
+      <button onclick="abrirGaleria()">Ver Galería</button>
+
+      <div class="galeria" id="galeria">
+        <div class="grid">
+          <!-- Aquí se insertan las imágenes automáticamente con JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="overlay" onclick="cerrarOverlay()">
+    <img id="overlay-img" src="" alt="Galería grande" />
+  </div>
+
+  <script>
+    const nombres = [
+      "FB_IMG_1751752819746","FB_IMG_1751752830755","FB_IMG_1751752840471","FB_IMG_1751752846840",
+      "FB_IMG_1751752853873","FB_IMG_1751752864872","FB_IMG_1751752877323","FB_IMG_1751752883907",
+      "FB_IMG_1751752901606","FB_IMG_1751752915306","FB_IMG_1751752927176","FB_IMG_1751752945381",
+      "FB_IMG_1751752957857","FB_IMG_1751752986848","FB_IMG_1751752993922","FB_IMG_1751753015672",
+      "FB_IMG_1751753025856","FB_IMG_1751753047139","FB_IMG_1751753053087","FB_IMG_1751753078160",
+      "FB_IMG_1751753089325","FB_IMG_1751753103862","FB_IMG_1751753129538","FB_IMG_1751753157401",
+      "FB_IMG_1751753189388","FB_IMG_1751753209918","FB_IMG_1751753214536","FB_IMG_1751753228569",
+      "FB_IMG_1751753235592","FB_IMG_1751753244354","FB_IMG_1751753268057","FB_IMG_1751753315025",
+      "FB_IMG_1751753321793","FB_IMG_1751753335840","FB_IMG_1751753401064","FB_IMG_1751753411324",
+      "FB_IMG_1751753427766","FB_IMG_1751753459201","FB_IMG_1751753543488","FB_IMG_1751753569542",
+      "FB_IMG_1751753672060","FB_IMG_1751753696305","FB_IMG_1751753703156","FB_IMG_1751753710122",
+      "FB_IMG_1751753730673","FB_IMG_1751753743338","FB_IMG_1751753748956","FB_IMG_1751753753541~2",
+      "FB_IMG_1751753757821","FB_IMG_1751753782638~2","FB_IMG_1751753790254","FB_IMG_1751753811038~2",
+      "FB_IMG_1751753816388","FB_IMG_1751753866738","FB_IMG_1751753880390","FB_IMG_1751753922005",
+      "FB_IMG_1751753931889","FB_IMG_1751753939655","FB_IMG_1751753943788","FB_IMG_1751754461175"
+    ];
+
+    function abrirGaleria() {
+      const contenedor = document.querySelector(".grid");
+      contenedor.innerHTML = "";
+      nombres.forEach(nombre => {
+        const img = document.createElement("img");
+        img.src = `fotos/${nombre}.jpg`;
+        img.alt = nombre;
+        img.onclick = () => mostrarOverlay(img.src);
+        contenedor.appendChild(img);
+      });
+      document.getElementById("galeria").style.display = "block";
+      iniciarCarrusel();
+    }
+
+    function mostrarOverlay(src) {
+      document.getElementById("overlay-img").src = src;
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    function cerrarOverlay() {
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    let carruselIndex = 0;
+    function iniciarCarrusel() {
+      const imgs = document.querySelectorAll(".grid img");
+      if (imgs.length === 0) return;
+      setInterval(() => {
+        carruselIndex = (carruselIndex + 1) % imgs.length;
+        mostrarOverlay(imgs[carruselIndex].src);
+      }, 7000);
+    }
+  </script>
+</body>
+</html>
